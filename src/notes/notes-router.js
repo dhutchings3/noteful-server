@@ -9,7 +9,7 @@ const jsonParser = express.json()
 const sanitizeNotes = note => ({
   id: note.id,
   name: xss(note.name),
-  content: xxs(note.content),
+  content: xss(note.content),
   modified: note.modified,
   folder_id: note.folder_id
 });
@@ -18,7 +18,7 @@ NotesRouter
   .route('/')
   .get((req, res, next) => {
     const knexInstance = req.app.get('db')
-    NotessService.getAllNotes(knexInstance)
+    NotesService.getAllNotes(knexInstance)
       .then(notes => {
         res.json(notes)
       })
@@ -71,7 +71,7 @@ NotesRouter
 
   .delete((req, res, next) => {
     const knexInstance = req.app.get('db');
-    NotessService.deleteNote( knexInstance, req.params.note_id)
+    NotesService.deleteNote( knexInstance, req.params.note_id)
       .then(() => {
         res.status(204).end()
       })
@@ -85,7 +85,7 @@ NotesRouter
     if (numberOfValues === 0)
       return res.status(400).json({
         error: {
-          message: `Request body must contain a 'name', 'content', 'folderid'`
+          message: `Request body must contain a 'name', 'content', 'folderId'`
         }
       })
 
