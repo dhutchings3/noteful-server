@@ -9,6 +9,7 @@ const notesRouter = require('./notes/notes-router')
 
 const app = express();
 
+app.use(cors())
 app.use('/api/folders', foldersRouter)
 app.use('/api/notes', notesRouter)
 
@@ -23,7 +24,6 @@ const morganOption = (NODE_ENV === 'production')
 
 app.use(morgan(morganOption))
 app.use(helmet())
-app.use(cors())
 
 
 app.use(function errorHandler(error, req, res, next) {
