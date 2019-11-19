@@ -65,7 +65,7 @@ describe("Folders Endpoint", function() {
     });
   });
 
-  describe("GET /api/folders/:folderId", () => {
+  describe("GET /api/folders/:folder_id", () => {
     const testFolders = makeFoldersArray();
 
     beforeEach("insert folders", () => {
@@ -73,15 +73,15 @@ describe("Folders Endpoint", function() {
     });
 
     it("responds with 200 and the specified folder", () => {
-      const folderId = 2;
-      const expectedFolder = testFolders[folderId - 1];
+      const folder_id = 2;
+      const expectedFolder = testFolders[folder_id - 1];
       return supertest(app)
-        .get(`/api/folders/${folderId}`)
+        .get(`/api/folders/${folder_id}`)
         .expect(200, expectedFolder);
     });
   });
 
-  describe("DELETE /api/folders/:folderId", () => {
+  describe("DELETE /api/folders/:folder_id", () => {
     context("Given there are folders in the database", () => {
       const testFolders = makeFoldersArray();
 
@@ -106,7 +106,7 @@ describe("Folders Endpoint", function() {
     });
   });
 
-  describe("PATCH /api/folders/:folderId", () => {
+  describe("PATCH /api/folders/:folder_id", () => {
     context("Given there are folders in the database", () => {
       const testFolders = makeFoldersArray();
 
@@ -181,34 +181,34 @@ describe("Folders Endpoint", function() {
       });
     });
   });
-  describe("GET /api/folders/:folderId", () => {
+  describe("GET /api/folders/:folder_id", () => {
     context("Given no folders", () => {
       it("responds with 404", () => {
-        const folderId = 435;
+        const folder_id = 435;
         return supertest(app)
-          .get(`/api/folders/${folderId}`)
+          .get(`/api/folders/${folder_id}`)
           .expect(404, { error: { message: `Folder doesn't exist` } });
       });
     });
   });
 
-  describe("DELETE /api/folders/:folderId", () => {
+  describe("DELETE /api/folders/:folder_id", () => {
     context("Given no folders", () => {
       it("responds with 404", () => {
-        const folderId = 456;
+        const folder_id = 456;
         return supertest(app)
-          .delete(`/api/folders/${folderId}`)
+          .delete(`/api/folders/${folder_id}`)
           .expect(404, { error: { message: `Folder doesn't exist` } });
       });
     });
   });
 
-  describe("PATCH /api/folders/:folderId", () => {
+  describe("PATCH /api/folders/:folder_id", () => {
     context("Given no folders", () => {
       it("responds with 404", () => {
-        const folderId = 456;
+        const folder_id = 456;
         return supertest(app)
-          .patch(`/api/folders/${folderId}`)
+          .patch(`/api/folders/${folder_id}`)
           .expect(404, { error: { message: `Folder doesn't exist` } });
       });
     });

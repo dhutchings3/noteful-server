@@ -85,7 +85,7 @@ NotesRouter
     if (numberOfValues === 0)
       return res.status(400).json({
         error: {
-          message: `Request body must contain a 'name', 'content', 'folderId'`
+          message: `Request body must contain a 'name', 'content', 'folder_id'`
         }
       })
 

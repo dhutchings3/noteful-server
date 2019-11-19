@@ -177,7 +177,7 @@ describe("Notes Endpoint", function() {
           .expect(400, {
             error: {
               message:
-                "Request body must contain a 'name', 'content', 'folderId'"
+                "Request body must contain a 'name', 'content', 'folder_id'"
             }
           });
       });
